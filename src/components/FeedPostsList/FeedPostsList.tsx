@@ -7,7 +7,7 @@ import { MAX_POSTS, POSTS_PER_PAGE } from "../../constants";
 import { StyledGridContainer, StyledDiv } from "./styles";
 
 const FeedPostsList = ({ data }: any) => {
-  const displayedPosts = data.slice(0, MAX_POSTS);
+  const displayedPosts = data?.slice(0, MAX_POSTS);
 
   const [currentPage, setCurrentPage] = useState(1);
   const lastPostIndex = currentPage * POSTS_PER_PAGE;
@@ -17,14 +17,15 @@ const FeedPostsList = ({ data }: any) => {
 
   useEffect(() => {
     setPosts(postsOnPage);
-  }, [currentPage]);
+    window.scrollTo(0, 0);
+  }, [data, currentPage]);
 
   return (
-    <>
-      <StyledGridContainer container justifyContent="center" spacing={4}>
+    <div>
+      <StyledGridContainer container spacing={6}>
         {posts.map((mockedPost: any) => {
           return (
-            <Grid id={mockedPost.id} item xs="auto">
+            <Grid key={mockedPost.id} item xs={12}>
               <FeedPost data={mockedPost} />
             </Grid>
           );
@@ -36,7 +37,7 @@ const FeedPostsList = ({ data }: any) => {
           onClick={(event: any) => setCurrentPage(+event.target.innerText)}
         />
       </StyledDiv>
-    </>
+    </div>
   );
 };
 

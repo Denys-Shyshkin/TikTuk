@@ -10,7 +10,7 @@ const StyledAvatar = styled(Avatar)<AvatarProps>(() => ({
 
 const StyledDiv = styled("div")(() => ({
   display: "flex",
-  width: 400,
+  width: "100%",
 }));
 
 const StyledSection = styled("section")(() => ({

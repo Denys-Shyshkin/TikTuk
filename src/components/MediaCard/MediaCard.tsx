@@ -21,9 +21,8 @@ const MediaCard = ({ videoURL, stats }: Props) => {
         image={videoURL}
         muted
         controls
-        onMouseOver={(event: SyntheticEvent<HTMLVideoElement>) =>
-          (event.target as HTMLVideoElement).play()
-        }
+        autoPlay
+        loop
       />
       {stats && (
         <StyledDiv>

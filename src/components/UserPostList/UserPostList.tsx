@@ -2,14 +2,19 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 
 import UserPost from "../UserPost";
+import SkeletonPostsList from "../SkeletonPostsList";
 import { StyledGridContainer } from "./styles";
 
-const UserPostList = ({ data }: any) => {
+const UserPostList = ({ data, isLoading }: any) => {
+  if (isLoading || !data.length) {
+    return <SkeletonPostsList />;
+  }
+
   return (
     <StyledGridContainer container spacing={1}>
-      {data.map((mockedPost: any) => {
+      {data?.map((mockedPost: any) => {
         return (
-          <Grid id={mockedPost.id} item>
+          <Grid key={mockedPost.id} item>
             <UserPost data={mockedPost} />
           </Grid>
         );

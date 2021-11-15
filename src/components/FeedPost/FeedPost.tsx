@@ -14,7 +14,8 @@ import {
 
 const FeedPost = ({ data }: any) => {
   const navigate = useNavigate();
-  const { text, authorMeta, videoURL, diggCount, commentCount, hashtags } =
+
+  const { text, authorMeta, videoUrl, diggCount, commentCount, hashtags } =
     data;
 
   const clickHandler = () => {
@@ -38,7 +39,7 @@ const FeedPost = ({ data }: any) => {
           onClick={clickHandler}
         />
         <StyledArticle>
-          <MediaCard videoURL={videoURL} />
+          <MediaCard videoURL={videoUrl} />
           <PostActions diggCount={diggCount} commentCount={commentCount} />
         </StyledArticle>
       </section>

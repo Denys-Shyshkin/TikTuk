@@ -1,6 +1,8 @@
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 
+import { colors } from "../../constants";
+
 const StyledDiv = styled("div")(() => ({
   display: "flex",
   flexDirection: "column",
@@ -12,7 +14,7 @@ const StyledSection = styled("section")(() => ({
 }));
 
 const StyledIconButton = styled(IconButton)<IconButtonProps>(() => ({
-  backgroundColor: "#CFC8C0",
+  backgroundColor: colors.secondary,
   margin: 5,
 }));
 

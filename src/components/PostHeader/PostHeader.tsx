@@ -14,7 +14,7 @@ type Props = {
 const PostHeader = ({ nickName, text, hashtags, onClick }: Props) => {
   const hashtagsString = hashtags?.map((tag: any) => {
     return (
-      <Typography id={tag.id} display="inline" variant="subtitle2">
+      <Typography key={tag.id} display="inline" variant="subtitle2">
         <Link href="#" underline="none" color="black">
           #{tag.name}&nbsp;
         </Link>
@@ -23,7 +23,7 @@ const PostHeader = ({ nickName, text, hashtags, onClick }: Props) => {
   });
 
   return (
-    <>
+    <div>
       {nickName && (
         <StyledTypography variant="subtitle1" onClick={onClick}>
           {nickName}
@@ -31,7 +31,7 @@ const PostHeader = ({ nickName, text, hashtags, onClick }: Props) => {
       )}
       <Typography variant="body2">{text}</Typography>
       {hashtagsString && <StyledDiv>{hashtagsString}</StyledDiv>}
-    </>
+    </div>
   );
 };
 

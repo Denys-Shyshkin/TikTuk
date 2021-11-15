@@ -4,12 +4,14 @@ import Typography, { TypographyProps } from "@mui/material/Typography";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 
+import { colors } from "../../constants";
+
 const StyledBox = styled(Box)<BoxProps>(() => ({
   flexGrow: 1,
 }));
 
 const StyledAppBar = styled(AppBar)<AppBarProps>(() => ({
-  backgroundColor: "#F4C486",
+  backgroundColor: colors.primary,
 }));
 
 const StyledTypography = styled(Typography)<TypographyProps>(() => ({

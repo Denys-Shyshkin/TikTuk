@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import UserCard from "../../components/UserCard";
 import UserPostList from "../../components/UserPostList";
+import ErrorAlert from "../../components/ErrorAlert";
 
 const mockedPost = {
   id: "6949187520152358149",
@@ -30,10 +31,67 @@ const mockedUser = {
 const mockedData = Array(30).fill(mockedPost);
 
 const MyProfilePage = () => {
+  const [profile, setProfile] = useState({});
+  const [userPosts, setUserPosts] = useState([]);
+
+  const [postsIsLoading, setPostsIsLoading] = useState(false);
+  const [profileIsLoading, setProfileIsLoading] = useState(false);
+
+  const [postsIsError, setPostsIsError] = useState(false);
+  const [profileIsError, setProfileIsError] = useState(false);
+
+  useEffect(() => {
+    setPostsIsLoading(true);
+    fetch("https://tiktok33.p.rapidapi.com/user/feed/dave.xp", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "tiktok33.p.rapidapi.com",
+        "x-rapidapi-key": "c1257dc04cmshd888bbb072eb770p1f2b8ajsnbf16d4cd1d66",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPostsIsLoading(false);
+        setUserPosts(data);
+      })
+      .catch(() => {
+        setPostsIsLoading(false);
+        setPostsIsError(true);
+      });
+  }, []);
+
+  useEffect(() => {
+    setProfileIsLoading(true);
+    fetch("https://tiktok33.p.rapidapi.com/user/info/dave.xp", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "tiktok33.p.rapidapi.com",
+        "x-rapidapi-key": "c1257dc04cmshd888bbb072eb770p1f2b8ajsnbf16d4cd1d66",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setProfileIsLoading(false);
+        setProfile(data);
+      })
+      .catch(() => {
+        setProfileIsLoading(false);
+        setProfileIsError(true);
+      });
+  }, []);
+
+  if (postsIsError || profileIsError) {
+    return <ErrorAlert />;
+  }
+
   return (
     <div>
-      <UserCard profile={mockedUser} />
-      <UserPostList data={mockedData} />
+      <UserCard profile={profile} isLoading={profileIsLoading} />
+      <UserPostList data={userPosts} isLoading={postsIsLoading} />
     </div>
   );
 };
