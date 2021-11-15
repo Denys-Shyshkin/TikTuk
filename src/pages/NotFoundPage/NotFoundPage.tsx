@@ -1,7 +1,13 @@
 import React from "react";
 
+import { StyledTypography } from "./styles";
+
 const NotFoundPage = () => {
-  return <div>Page Not Found</div>;
+  return (
+    <StyledTypography variant="h5" align="center">
+      Oops... Page Not Found
+    </StyledTypography>
+  );
 };
 
 export default NotFoundPage;

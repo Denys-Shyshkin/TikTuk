@@ -1,7 +1,9 @@
 import React from "react";
 
-const TrendingPage = () => {
-  return <div>Trending Feed</div>;
+import FeedPostList from "../../components/FeedPostsList";
+
+const TrendingPage = ({ mockedData }: any) => {
+  return <FeedPostList data={mockedData} />;
 };
 
 export default TrendingPage;
