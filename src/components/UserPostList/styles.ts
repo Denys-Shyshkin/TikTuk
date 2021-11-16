@@ -17,4 +17,13 @@ const StyledGridContainer = styled(Grid, {
   marginRight: "auto",
 }));
 
-export { StyledGridContainer };
+const StyledDiv = styled("div")(() => ({
+  marginLeft: "auto",
+  marginRight: "auto",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: 20,
+}));
+
+export { StyledGridContainer, StyledDiv };

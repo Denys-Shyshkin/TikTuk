@@ -74,6 +74,11 @@ const ProfilePage = () => {
     return <NotFoundPage />;
   }
 
+  if (!Array.isArray(userPosts)) {
+    const userFeed = require("../../constants/user-feed.json");
+    setUserPosts(userFeed.itemList);
+  }
+
   return (
     <div>
       <UserCard profile={profile} isLoading={profileIsLoading} />

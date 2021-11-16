@@ -14,5 +14,5 @@ export const colors = {
   secondary: "#CFC8C0",
 };
 
-export const MEDIA_QUERY = "(max-width:420px)";
+export const MEDIA_QUERY = "(max-width:600px)";
 export const isMobile = "isMobile";
