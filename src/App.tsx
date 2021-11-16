@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MyProfilePage from "./pages/MyProfilePage";
+import ProfilePage from "./pages/ProfilePage";
 import TrendingPage from "./pages/TrendingPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import AppBar from "./components/MenuAppBar";
-import UserProfilePage from "./pages/UserProfilePage";
 import { Pages } from "./constants";
 
 const mockedPost = {
@@ -49,53 +48,15 @@ const mockedPost = {
 const mockedData = Array(30).fill(mockedPost);
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetch("https://tiktok33.p.rapidapi.com/trending/feed", {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "tiktok33.p.rapidapi.com",
-        "x-rapidapi-key": "c1257dc04cmshd888bbb072eb770p1f2b8ajsnbf16d4cd1d66",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setIsLoading(false);
-        setPosts(data);
-      })
-      .catch(() => {
-        setIsLoading(false);
-        setIsError(true);
-      });
-  }, []);
-
   return (
     <div>
       <header>
         <AppBar />
       </header>
       <Routes>
-        <Route
-          path={Pages.Feed}
-          element={
-            <TrendingPage
-              posts={posts}
-              isLoading={isLoading}
-              isError={isError}
-            />
-          }
-        />
-        <Route path={Pages.Profile} element={<MyProfilePage />} />
-        <Route
-          path={Pages.User}
-          element={<UserProfilePage posts={posts} isLoading={isLoading} />}
-        />
+        <Route path={Pages.Feed} element={<TrendingPage />} />
+        <Route path={Pages.Profile} element={<ProfilePage />} />
+        <Route path={Pages.User} element={<ProfilePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

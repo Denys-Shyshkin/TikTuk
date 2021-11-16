@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import UserCard from "../../components/UserCard";
 import UserPostList from "../../components/UserPostList";
 import ErrorAlert from "../../components/ErrorAlert";
+import NotFoundPage from "../../pages/NotFoundPage";
+import { fetchData } from "../../api";
+import { Endpoint, currentUser } from "../../api/constants";
 
 const mockedPost = {
   id: "6949187520152358149",
@@ -30,7 +34,11 @@ const mockedUser = {
 
 const mockedData = Array(30).fill(mockedPost);
 
-const MyProfilePage = () => {
+const ProfilePage = () => {
+  const params = useParams();
+  const chosenUser = params.uniqueId;
+  const user = chosenUser ? chosenUser : currentUser;
+
   const [profile, setProfile] = useState({});
   const [userPosts, setUserPosts] = useState([]);
 
@@ -41,51 +49,29 @@ const MyProfilePage = () => {
   const [profileIsError, setProfileIsError] = useState(false);
 
   useEffect(() => {
-    setPostsIsLoading(true);
-    fetch("https://tiktok33.p.rapidapi.com/user/feed/dave.xp", {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "tiktok33.p.rapidapi.com",
-        "x-rapidapi-key": "c1257dc04cmshd888bbb072eb770p1f2b8ajsnbf16d4cd1d66",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setPostsIsLoading(false);
-        setUserPosts(data);
-      })
-      .catch(() => {
-        setPostsIsLoading(false);
-        setPostsIsError(true);
-      });
-  }, []);
+    fetchData(
+      Endpoint.UserFeed + user,
+      setPostsIsLoading,
+      setUserPosts,
+      setPostsIsError
+    );
+  }, [user]);
 
   useEffect(() => {
-    setProfileIsLoading(true);
-    fetch("https://tiktok33.p.rapidapi.com/user/info/dave.xp", {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "tiktok33.p.rapidapi.com",
-        "x-rapidapi-key": "c1257dc04cmshd888bbb072eb770p1f2b8ajsnbf16d4cd1d66",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setProfileIsLoading(false);
-        setProfile(data);
-      })
-      .catch(() => {
-        setProfileIsLoading(false);
-        setProfileIsError(true);
-      });
-  }, []);
+    fetchData(
+      Endpoint.UserInfo + user,
+      setProfileIsLoading,
+      setProfile,
+      setProfileIsError
+    );
+  }, [user]);
 
   if (postsIsError || profileIsError) {
     return <ErrorAlert />;
+  }
+
+  if (Object.keys(profile).length === 0 && !profileIsLoading) {
+    return <NotFoundPage />;
   }
 
   return (
@@ -96,4 +82,4 @@ const MyProfilePage = () => {
   );
 };
 
-export default MyProfilePage;
+export default ProfilePage;

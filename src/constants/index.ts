@@ -1,7 +1,7 @@
 export enum Pages {
   Feed = "/",
   Profile = "/profile",
-  User = "profile/:userId",
+  User = "profile/:uniqueId",
 }
 
 export const VIDEO_HEIGHT = "400";

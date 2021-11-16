@@ -19,7 +19,7 @@ const FeedPost = ({ data }: any) => {
     data;
 
   const clickHandler = () => {
-    navigate(`${Pages.Profile}/${authorMeta.id}`);
+    navigate(`${Pages.Profile}/${authorMeta.name}`);
   };
 
   return (

@@ -1,9 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { useParams } from "react-router-dom";
 
-import NotFoundPage from "../../pages/NotFoundPage";
 import { formatLargeNumber } from "../../utils/numbers";
 import {
   StyledCard,
@@ -16,19 +14,12 @@ import {
 } from "./styles";
 
 type Props = {
-  data?: any;
-  profile?: any;
-  isLoading?: any;
+  profile: any;
+  isLoading: any;
 };
 
-const UserCard = ({ data, profile, isLoading }: Props) => {
-  const params = useParams();
-
-  const chosenUser = data?.find(
-    (post: any) => post.authorMeta.id === params.userId
-  );
-
-  if (isLoading && (!data || !profile)) {
+const UserCard = ({ profile, isLoading }: Props): ReactElement | null => {
+  if (isLoading) {
     return (
       <SpinnerCard>
         <StyledProgress size={100} thickness={2} />
@@ -36,40 +27,21 @@ const UserCard = ({ data, profile, isLoading }: Props) => {
     );
   }
 
-  if (!profile && !chosenUser) {
-    return <NotFoundPage />;
-  }
-
-  const displayedData = {
-    avatar: chosenUser
-      ? chosenUser.authorMeta.avatar
-      : profile?.user?.avatarLarger,
-    nickName: chosenUser
-      ? chosenUser.authorMeta.nickName
-      : profile?.user?.nickname,
-    following: chosenUser
-      ? chosenUser.authorMeta.following
-      : profile?.stats?.followingCount,
-    followers: chosenUser
-      ? chosenUser.authorMeta.fans
-      : profile?.stats?.followerCount,
-    likes: chosenUser ? chosenUser.authorMeta.heart : profile?.stats?.heart,
-    signature: chosenUser
-      ? chosenUser.authorMeta.signature
-      : profile?.user?.signature,
-  };
+  const { user, stats } = profile;
+  const { nickname, avatarLarger, signature } = user;
+  const { followingCount, followerCount, heart } = stats;
 
   return (
     <StyledCard>
       <StyledSection>
-        <StyledAvatar alt={displayedData.nickName} src={displayedData.avatar} />
+        <StyledAvatar alt={nickname} src={avatarLarger} />
         <StyledCardContent>
           <Typography variant="h6" textAlign="center">
-            {displayedData.nickName}
+            {nickname}
           </Typography>
           <StyledArticle>
             <Typography variant="subtitle2" textAlign="center">
-              {formatLargeNumber(displayedData.following)}&nbsp;
+              {formatLargeNumber(followingCount)}&nbsp;
             </Typography>
             <Typography variant="caption" textAlign="center">
               Following
@@ -77,7 +49,7 @@ const UserCard = ({ data, profile, isLoading }: Props) => {
           </StyledArticle>
           <StyledArticle>
             <Typography variant="subtitle2" textAlign="center">
-              {formatLargeNumber(displayedData.followers)}&nbsp;
+              {formatLargeNumber(followerCount)}&nbsp;
             </Typography>
             <Typography variant="caption" textAlign="center">
               Followers
@@ -85,7 +57,7 @@ const UserCard = ({ data, profile, isLoading }: Props) => {
           </StyledArticle>
           <StyledArticle>
             <Typography variant="subtitle2" textAlign="center">
-              {formatLargeNumber(displayedData.likes)}&nbsp;
+              {formatLargeNumber(heart)}&nbsp;
             </Typography>
             <Typography variant="caption" textAlign="center">
               Likes
@@ -95,7 +67,7 @@ const UserCard = ({ data, profile, isLoading }: Props) => {
       </StyledSection>
       <CardContent>
         <Typography variant="subtitle2" textAlign="center">
-          {displayedData.signature}
+          {signature}
         </Typography>
       </CardContent>
     </StyledCard>
