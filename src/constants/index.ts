@@ -13,3 +13,6 @@ export const colors = {
   primary: "#F4C486",
   secondary: "#CFC8C0",
 };
+
+export const MEDIA_QUERY = "(max-width:420px)";
+export const isMobile = "isMobile";

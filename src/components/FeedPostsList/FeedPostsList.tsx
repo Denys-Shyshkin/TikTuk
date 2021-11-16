@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import FeedPost from "../FeedPost";
-import { MAX_POSTS, POSTS_PER_PAGE } from "../../constants";
+import { MAX_POSTS, POSTS_PER_PAGE, MEDIA_QUERY } from "../../constants";
 import { StyledGridContainer, StyledDiv } from "./styles";
 
 const FeedPostsList = ({ data }: any) => {
+  const matches = useMediaQuery(MEDIA_QUERY);
   const displayedPosts = data?.slice(0, MAX_POSTS);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,7 +24,7 @@ const FeedPostsList = ({ data }: any) => {
 
   return (
     <div>
-      <StyledGridContainer container spacing={6}>
+      <StyledGridContainer isMobile={matches} container spacing={6}>
         {posts.map((mockedPost: any) => {
           return (
             <Grid key={mockedPost.id} item xs={12}>

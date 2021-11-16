@@ -2,6 +2,8 @@ import Stack, { StackProps } from "@mui/material/Stack";
 import Skeleton, { SkeletonProps } from "@mui/material/Skeleton";
 import { styled } from "@mui/material/styles";
 
+import { isMobile } from "../../constants";
+
 const StyledStack = styled(Stack)<StackProps>(() => ({
   display: "flex",
   flexDirection: "row",
@@ -15,14 +17,21 @@ const TextSkeleton = styled(Skeleton)<SkeletonProps>(() => ({
   marginBottom: 5,
 }));
 
-const StyledDiv = styled("div")(() => ({
-  display: "flex",
+interface StyledDivProps extends React.HTMLAttributes<HTMLDivElement> {
+  isMobile?: boolean;
+}
+
+const StyledDiv = styled("article", {
+  shouldForwardProp: (prop) => prop !== isMobile,
+})<StyledDivProps>(({ isMobile }) => ({
+  display: isMobile ? "block" : "flex",
+  alignItems: "end",
 }));
 
-const StyledSection = styled("section")(() => ({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "end",
+const StyledSection = styled("div", {
+  shouldForwardProp: (prop) => prop !== isMobile,
+})<StyledDivProps>(({ isMobile }) => ({
+  display: isMobile ? "none" : "flex",
 }));
 
 const IconSkeleton = styled(Skeleton)<SkeletonProps>(() => ({

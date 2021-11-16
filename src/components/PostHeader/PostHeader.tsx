@@ -1,8 +1,10 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { StyledDiv, StyledTypography } from "./styles";
+import { MEDIA_QUERY } from "../../constants";
+import { StyledDiv, StyledSection, StyledTypography } from "./styles";
 
 type Props = {
   nickName?: any;
@@ -12,26 +14,28 @@ type Props = {
 };
 
 const PostHeader = ({ nickName, text, hashtags, onClick }: Props) => {
+  const matches = useMediaQuery(MEDIA_QUERY);
+
   const hashtagsString = hashtags?.map((tag: any) => {
     return (
       <Typography key={tag.id} display="inline" variant="subtitle2">
         <Link href="#" underline="none" color="black">
-          #{tag.name}&nbsp;
+          #{tag.name + " "}
         </Link>
       </Typography>
     );
   });
 
   return (
-    <div>
+    <StyledDiv isMobile={matches}>
       {nickName && (
         <StyledTypography variant="subtitle1" onClick={onClick}>
           {nickName}
         </StyledTypography>
       )}
       <Typography variant="body2">{text}</Typography>
-      {hashtagsString && <StyledDiv>{hashtagsString}</StyledDiv>}
-    </div>
+      {hashtagsString && <StyledSection>{hashtagsString}</StyledSection>}
+    </StyledDiv>
   );
 };
 

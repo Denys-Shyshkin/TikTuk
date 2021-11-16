@@ -1,10 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import PostHeader from "../PostHeader";
 import MediaCard from "../MediaCard";
 import PostActions from "../PostActions";
-import { Pages } from "../../constants";
+import { Pages, MEDIA_QUERY } from "../../constants";
 import {
   StyledAvatar,
   StyledDiv,
@@ -14,6 +15,7 @@ import {
 
 const FeedPost = ({ data }: any) => {
   const navigate = useNavigate();
+  const matches = useMediaQuery(MEDIA_QUERY);
 
   const { text, authorMeta, videoUrl, diggCount, commentCount, hashtags } =
     data;
@@ -38,7 +40,7 @@ const FeedPost = ({ data }: any) => {
           hashtags={hashtags}
           onClick={clickHandler}
         />
-        <StyledArticle>
+        <StyledArticle isMobile={matches}>
           <MediaCard videoURL={videoUrl} />
           <PostActions diggCount={diggCount} commentCount={commentCount} />
         </StyledArticle>
