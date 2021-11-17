@@ -123,7 +123,7 @@ export type UserFeedItem = {
   showNotPass: boolean;
   vl1: boolean;
   itemMute: boolean;
-  effectStickers: EffectSticker[];
+  effectStickers?: EffectSticker[] | undefined;
   authorStats: AuthorStats;
   privateItem: boolean;
   duetEnabled: boolean;

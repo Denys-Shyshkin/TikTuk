@@ -9,7 +9,7 @@ export const fetchData = (
   endpoint: string,
   controller: AbortCtrl,
   setIsLoading: (a: boolean) => void,
-  setData: (a: never[]) => void,
+  setData: (a: any) => void,
   setIsError: (a: boolean) => void
 ) => {
   setIsLoading(true);

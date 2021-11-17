@@ -36,7 +36,7 @@ const UserCard = ({ profile, isLoading }: Props): ReactElement => {
   }
 
   const { nickname, avatarLarger, signature } = profile.user;
-  const { followingCount, followerCount, heart } = profile?.stats;
+  const { followingCount, followerCount, heart } = profile.stats;
 
   return (
     <StyledCard>

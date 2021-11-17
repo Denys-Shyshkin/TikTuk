@@ -50,7 +50,7 @@ const UserPostList = ({ data, isLoading }: Props) => {
     <div>
       {error && <ErrorAlert message={ErrorMessages.VideoError} />}
       <StyledGridContainer isMobile={matches} container spacing={1}>
-        {posts?.map((userPost: UserFeedItem) => {
+        {posts.map((userPost: UserFeedItem) => {
           return (
             <Grid key={userPost.id} item>
               <UserPost data={userPost} error={error} setError={setError} />

@@ -44,10 +44,10 @@ const FeedPostsList = ({ data }: Props) => {
     <div>
       {error && <ErrorAlert message={ErrorMessages.VideoError} />}
       <StyledGridContainer isMobile={matches} container spacing={6}>
-        {posts.map((mockedPost: FeedPostItem) => {
+        {posts.map((post: FeedPostItem) => {
           return (
-            <Grid key={mockedPost.id} item xs={12}>
-              <FeedPost data={mockedPost} error={error} setError={setError} />
+            <Grid key={post.id} item xs={12}>
+              <FeedPost data={post} error={error} setError={setError} />
             </Grid>
           );
         })}

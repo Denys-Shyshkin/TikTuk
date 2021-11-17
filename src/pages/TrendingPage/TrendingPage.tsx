@@ -24,14 +24,12 @@ const TrendingPage = () => {
     return () => controller.abort();
   }, []);
 
-  console.log(posts);
-
-  if ((!Array.isArray(posts) || isError) && !isLoading) {
-    return renderErrorAlert(posts as ErrorObject);
-  }
-
   if (isLoading) {
     return <SkeletonFeedList />;
+  }
+
+  if (!Array.isArray(posts) || isError) {
+    return renderErrorAlert(posts as ErrorObject);
   }
 
   return <FeedPostList data={posts as TrendingFeedList} />;

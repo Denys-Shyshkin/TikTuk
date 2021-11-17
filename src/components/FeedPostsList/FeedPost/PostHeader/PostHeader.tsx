@@ -17,7 +17,7 @@ type Props = {
 const PostHeader = ({ nickName, text, hashtags, onClick }: Props) => {
   const matches = useMediaQuery(MEDIA_QUERY);
 
-  const hashtagsString = hashtags?.map((tag: Hashtag) => {
+  const hashtagsString = hashtags.map((tag: Hashtag) => {
     return (
       <Typography key={tag.id} display="inline" variant="subtitle2">
         <Link href="#" underline="none" color="black">
