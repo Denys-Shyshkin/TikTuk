@@ -4,6 +4,9 @@ import { styled } from "@mui/material/styles";
 
 const StyledSnackbar = styled(Snackbar)<SnackbarProps>(() => ({
   marginTop: 70,
+  ":hover": {
+    cursor: "pointer",
+  },
 }));
 
 const StyledAlert = styled(MuiAlert)<AlertProps>(() => ({

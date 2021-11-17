@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom";
 
 import ProfilePage from "./pages/ProfilePage";
 import TrendingPage from "./pages/TrendingPage";
-import NotFoundPage from "./pages/NotFoundPage";
 import AppBar from "./components/MenuAppBar";
 import { Pages } from "./constants";
+import ErrorAlert from "./components/ErrorAlert";
 
 const mockedPost = {
   id: "7006694664724122881",
@@ -57,7 +57,10 @@ const App = () => {
         <Route path={Pages.Feed} element={<TrendingPage />} />
         <Route path={Pages.Profile} element={<ProfilePage />} />
         <Route path={Pages.User} element={<ProfilePage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route
+          path="*"
+          element={<ErrorAlert message={"Oops... Page Not Found"} />}
+        />
       </Routes>
     </div>
   );

@@ -28,7 +28,7 @@ const TrendingPage = () => {
   }
 
   if (isError) {
-    return <ErrorAlert />;
+    return <ErrorAlert message={"Something Went Wrong..."} />;
   }
 
   return <FeedPostList data={posts} />;
