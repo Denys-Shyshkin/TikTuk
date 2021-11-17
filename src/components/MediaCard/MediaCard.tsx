@@ -1,15 +1,15 @@
 import React from "react";
-import { SyntheticEvent } from "react";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 import { formatLargeNumber } from "../../utils/numbers";
 import { VIDEO_HEIGHT } from "../../constants";
+import { Stats } from "../../types/userFeedTypes";
 import { StyledCard, StyledDiv, StyledIcon } from "./styles";
 
 type Props = {
-  videoURL: any;
-  stats?: any;
+  videoURL: string;
+  stats?: Stats;
 };
 
 const MediaCard = ({ videoURL, stats }: Props) => {

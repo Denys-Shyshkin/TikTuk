@@ -1,13 +1,20 @@
 import { BASE_URL, RAPID_API_KEY } from "./constants";
 
+type AbortCtrl = {
+  readonly signal: AbortSignal;
+  abort: () => void;
+};
+
 export const fetchData = (
-  endpoint: any,
-  setIsLoading: any,
-  setData: any,
-  setIsError: any
+  endpoint: string,
+  controller: AbortCtrl,
+  setIsLoading: (a: boolean) => void,
+  setData: (a: never[]) => void,
+  setIsError: (a: boolean) => void
 ) => {
   setIsLoading(true);
   fetch(BASE_URL + endpoint, {
+    signal: controller.signal,
     method: "GET",
     headers: {
       "x-rapidapi-host": "tiktok33.p.rapidapi.com",

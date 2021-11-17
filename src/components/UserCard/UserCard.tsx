@@ -3,6 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
 import { formatLargeNumber } from "../../utils/numbers";
+import { UserInfo } from "../../types/userInfoTypes";
 import {
   StyledCard,
   SpinnerCard,
@@ -11,11 +12,12 @@ import {
   StyledAvatar,
   StyledCardContent,
   StyledArticle,
+  StyledTypography,
 } from "./styles";
 
 type Props = {
-  profile: any;
-  isLoading: any;
+  profile: UserInfo;
+  isLoading: boolean;
 };
 
 const UserCard = ({ profile, isLoading }: Props): ReactElement | null => {
@@ -27,9 +29,8 @@ const UserCard = ({ profile, isLoading }: Props): ReactElement | null => {
     );
   }
 
-  const { user, stats } = profile;
-  const { nickname, avatarLarger, signature } = user;
-  const { followingCount, followerCount, heart } = stats;
+  const { nickname, avatarLarger, signature } = profile.user;
+  const { followingCount, followerCount, heart } = profile.stats;
 
   return (
     <StyledCard>
@@ -66,9 +67,9 @@ const UserCard = ({ profile, isLoading }: Props): ReactElement | null => {
         </StyledCardContent>
       </StyledSection>
       <CardContent>
-        <Typography variant="subtitle2" textAlign="center">
+        <StyledTypography variant="subtitle2" textAlign="center">
           {signature}
-        </Typography>
+        </StyledTypography>
       </CardContent>
     </StyledCard>
   );

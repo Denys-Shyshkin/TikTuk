@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SkeletonFeedItem from "../SkeletonFeedItem";
+import SkeletonFeedItem from "./SkeletonFeedItem";
 import { POSTS_PER_PAGE, MEDIA_QUERY } from "../../constants";
 import { StyledGridContainer } from "./styles";
 

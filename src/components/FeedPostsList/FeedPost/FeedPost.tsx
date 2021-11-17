@@ -2,10 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import PostHeader from "../PostHeader";
-import MediaCard from "../MediaCard";
-import PostActions from "../PostActions";
-import { Pages, MEDIA_QUERY } from "../../constants";
+import PostHeader from "./PostHeader";
+import MediaCard from "../../MediaCard";
+import PostActions from "./PostActions";
+import { Pages, MEDIA_QUERY } from "../../../constants";
+import { FeedPostItem } from "../../../types/trendingFeedTypes";
 import {
   StyledAvatar,
   StyledDiv,
@@ -13,7 +14,11 @@ import {
   StyledArticle,
 } from "./styles";
 
-const FeedPost = ({ data }: any) => {
+type Props = {
+  data: FeedPostItem;
+};
+
+const FeedPost = ({ data }: Props) => {
   const navigate = useNavigate();
   const matches = useMediaQuery(MEDIA_QUERY);
 

@@ -2,7 +2,7 @@ import Stack, { StackProps } from "@mui/material/Stack";
 import Skeleton, { SkeletonProps } from "@mui/material/Skeleton";
 import { styled } from "@mui/material/styles";
 
-import { isMobile } from "../../constants";
+import { isMobile } from "../../../constants";
 
 const StyledStack = styled(Stack)<StackProps>(() => ({
   display: "flex",
@@ -32,6 +32,7 @@ const StyledSection = styled("div", {
   shouldForwardProp: (prop) => prop !== isMobile,
 })<StyledDivProps>(({ isMobile }) => ({
   display: isMobile ? "none" : "flex",
+  flexDirection: "column",
 }));
 
 const IconSkeleton = styled(Skeleton)<SkeletonProps>(() => ({

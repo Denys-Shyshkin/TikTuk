@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import UserPost from "../UserPost";
+import UserPost from "./UserPost";
 import SkeletonPostsList from "../SkeletonPostsList";
 import { MAX_POSTS, POSTS_PER_PAGE, MEDIA_QUERY } from "../../constants";
+import { UserFeedList, UserFeedItem } from "../../types/userFeedTypes";
 import { StyledGridContainer, StyledDiv } from "./styles";
 
-const UserPostList = ({ data, isLoading }: any) => {
+type Props = {
+  data: UserFeedList;
+  isLoading: boolean;
+};
+
+const UserPostList = ({ data, isLoading }: Props) => {
   const matches = useMediaQuery(MEDIA_QUERY);
   const displayedPosts = data?.slice(0, MAX_POSTS);
 
@@ -27,13 +33,18 @@ const UserPostList = ({ data, isLoading }: any) => {
     return <SkeletonPostsList />;
   }
 
+  const clickHandler = (event: MouseEvent) => {
+    const clickTarget = event.target as HTMLElement;
+    setCurrentPage(+clickTarget.innerText);
+  };
+
   return (
     <div>
       <StyledGridContainer isMobile={matches} container spacing={1}>
-        {posts?.map((mockedPost: any) => {
+        {posts?.map((userPost: UserFeedItem) => {
           return (
-            <Grid key={mockedPost.id} item>
-              <UserPost data={mockedPost} />
+            <Grid key={userPost.id} item>
+              <UserPost data={userPost} />
             </Grid>
           );
         })}
@@ -41,7 +52,7 @@ const UserPostList = ({ data, isLoading }: any) => {
       <StyledDiv>
         <Pagination
           count={MAX_POSTS / POSTS_PER_PAGE}
-          onClick={(event: any) => setCurrentPage(+event.target.innerText)}
+          onClick={(event) => clickHandler(event)}
         />
       </StyledDiv>
     </div>

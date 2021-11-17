@@ -1,7 +1,7 @@
 import Avatar, { AvatarProps } from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 
-import { isMobile } from "../../constants";
+import { isMobile } from "../../../constants";
 
 const StyledAvatar = styled(Avatar)<AvatarProps>(() => ({
   margin: 10,

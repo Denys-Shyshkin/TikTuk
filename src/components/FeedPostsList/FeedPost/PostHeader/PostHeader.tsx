@@ -3,20 +3,21 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { MEDIA_QUERY } from "../../constants";
+import { MEDIA_QUERY } from "../../../../constants";
+import { Hashtag } from "../../../../types/trendingFeedTypes";
 import { StyledDiv, StyledSection, StyledTypography } from "./styles";
 
 type Props = {
-  nickName?: any;
-  text: any;
-  hashtags?: any;
-  onClick?: any;
+  nickName: string;
+  text: string;
+  hashtags: Hashtag[];
+  onClick: () => void;
 };
 
 const PostHeader = ({ nickName, text, hashtags, onClick }: Props) => {
   const matches = useMediaQuery(MEDIA_QUERY);
 
-  const hashtagsString = hashtags?.map((tag: any) => {
+  const hashtagsString = hashtags?.map((tag: Hashtag) => {
     return (
       <Typography key={tag.id} display="inline" variant="subtitle2">
         <Link href="#" underline="none" color="black">

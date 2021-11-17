@@ -4,6 +4,7 @@ import CircularProgress, {
   CircularProgressProps,
 } from "@mui/material/CircularProgress";
 import CardContent, { CardContentProps } from "@mui/material/CardContent";
+import Typography, { TypographyProps } from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
 import { colors } from "../../constants";
@@ -54,6 +55,10 @@ const StyledArticle = styled("article")(() => ({
   alignItems: "end",
 }));
 
+const StyledTypography = styled(Typography)<TypographyProps>(() => ({
+  whiteSpace: "pre-wrap",
+}));
+
 export {
   StyledCard,
   SpinnerCard,
@@ -62,4 +67,5 @@ export {
   StyledAvatar,
   StyledCardContent,
   StyledArticle,
+  StyledTypography,
 };

@@ -1,7 +1,7 @@
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 
-import { colors, isMobile } from "../../constants";
+import { colors, isMobile } from "../../../../constants";
 
 interface StyledDivProps extends React.HTMLAttributes<HTMLDivElement> {
   isMobile?: boolean;

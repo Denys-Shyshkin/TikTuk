@@ -12,10 +12,18 @@ const TrendingPage = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetchData(Endpoint.TrendingFeed, setIsLoading, setPosts, setIsError);
+    const controller = new AbortController();
+    fetchData(
+      Endpoint.TrendingFeed,
+      controller,
+      setIsLoading,
+      setPosts,
+      setIsError
+    );
+    return () => controller.abort();
   }, []);
 
-  if (isLoading) {
+  if (isLoading || !posts.length) {
     return <SkeletonFeedList />;
   }
 

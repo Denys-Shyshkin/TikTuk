@@ -5,6 +5,7 @@ import UserCard from "../../components/UserCard";
 import UserPostList from "../../components/UserPostList";
 import ErrorAlert from "../../components/ErrorAlert";
 import NotFoundPage from "../../pages/NotFoundPage";
+import { UserInfo } from "../../types/userInfoTypes";
 import { fetchData } from "../../api";
 import { Endpoint, currentUser } from "../../api/constants";
 
@@ -49,21 +50,27 @@ const ProfilePage = () => {
   const [profileIsError, setProfileIsError] = useState(false);
 
   useEffect(() => {
+    const controller = new AbortController();
     fetchData(
       Endpoint.UserFeed + user,
+      controller,
       setPostsIsLoading,
       setUserPosts,
       setPostsIsError
     );
+    return () => controller.abort();
   }, [user]);
 
   useEffect(() => {
+    const controller = new AbortController();
     fetchData(
       Endpoint.UserInfo + user,
+      controller,
       setProfileIsLoading,
       setProfile,
       setProfileIsError
     );
+    return () => controller.abort();
   }, [user]);
 
   if (postsIsError || profileIsError) {
@@ -75,13 +82,13 @@ const ProfilePage = () => {
   }
 
   if (!Array.isArray(userPosts)) {
-    const userFeed = require("../../constants/user-feed.json");
+    const userFeed = require("../../user-feed.json");
     setUserPosts(userFeed.itemList);
   }
 
   return (
     <div>
-      <UserCard profile={profile} isLoading={profileIsLoading} />
+      <UserCard profile={profile as UserInfo} isLoading={profileIsLoading} />
       <UserPostList data={userPosts} isLoading={postsIsLoading} />
     </div>
   );

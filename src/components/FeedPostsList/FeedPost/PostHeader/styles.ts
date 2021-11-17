@@ -1,7 +1,7 @@
 import Typography, { TypographyProps } from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-import { isMobile } from "../../constants";
+import { isMobile } from "../../../../constants";
 
 interface StyledDivProps extends React.HTMLAttributes<HTMLDivElement> {
   isMobile?: boolean;
