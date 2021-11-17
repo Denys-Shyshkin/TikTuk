@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# TikTuk :)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a test task as a part of [Genesis](https://gen.tech) Front-End School competitive selection.
 
-## Available Scripts
+## In Brief
 
-In the project directory, you can run:
+This project is a TikTok-like web application. The main goal is to display all data correctly. It consists of two pages: *Feed* - the list of posts from different users and *Profile* - given (or chosen) user info.
 
-### `yarn start`
+Main programming language - **TypeScript**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+List of major libraries that was used for development:
+- [React](https://reactjs.org) for building user interfaces;
+- [Material UI](https://mui.com/) for preconfigured and customizable React components;
+- [React Router](https://reactrouter.com/) for client-side routing;
+- [React Testing Library](https://testing-library.com) for unit and integration testing of React components;
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+## How to run
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This Web Application is not hosted on the web, but you can run it on your local machine in the development mode.\
+To do so, follow these steps:
+1. Download the project to your local machine;
+2. Open a terminal in the root folder of the project and run `npm install` or `yarn` (depending on your installed package manager) in order to download all required dependencies;
+3. After all installations are complete, run `npm start` or `yarn start` in order to launch the application locally;
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser;
 
-### `yarn build`
+As a backend for this application RapidApi is used. In order for the application to work as it was intended you should provide it with a special key. To obtain this key (if already have one skip to step #4) follow these steps:
+1. Register at [RapidApi](https://rapidapi.com/hub);
+2. Follow this [link](https://rapidapi.com/premium-apis-premium-apis-default/api/tiktok33/) and under tab **Pricing** choose a suitable plan for you;
+3. After that you should have available ***X-RapidAPI-Key*** at **Endpoints** tab, **Header Parameters** section;
+4. Paste this key into file `src/api/constants.ts`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img width="470" alt="Screenshot 2021-11-17 at 11 03 25" src="https://user-images.githubusercontent.com/74503981/142169929-0bd6b041-6d50-4e1d-978b-3979b17e91ea.png">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Have Fun!**
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
