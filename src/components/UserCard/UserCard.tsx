@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 
 import { formatLargeNumber } from "../../utils/numbers";
 import { UserInfo } from "../../types/userInfoTypes";
+import { ErrorMessages } from "../../constants";
 import {
   StyledCard,
   SpinnerCard,
@@ -14,13 +15,14 @@ import {
   StyledArticle,
   StyledTypography,
 } from "./styles";
+import ErrorAlert from "../ErrorAlert";
 
 type Props = {
   profile: UserInfo;
   isLoading: boolean;
 };
 
-const UserCard = ({ profile, isLoading }: Props): ReactElement | null => {
+const UserCard = ({ profile, isLoading }: Props): ReactElement => {
   if (isLoading) {
     return (
       <SpinnerCard>
@@ -29,8 +31,12 @@ const UserCard = ({ profile, isLoading }: Props): ReactElement | null => {
     );
   }
 
+  if (!profile) {
+    return <ErrorAlert message={ErrorMessages.UnknownError} />;
+  }
+
   const { nickname, avatarLarger, signature } = profile.user;
-  const { followingCount, followerCount, heart } = profile.stats;
+  const { followingCount, followerCount, heart } = profile?.stats;
 
   return (
     <StyledCard>

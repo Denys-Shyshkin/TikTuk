@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
@@ -9,24 +9,33 @@ import fallbackSrc from "../../assets/Tik-tok-logo.jpeg";
 import { StyledCard, StyledDiv, StyledIcon } from "./styles";
 
 type Props = {
+  id: string;
   videoURL: string;
-  isError: boolean;
-  setIsError: (a: boolean) => void;
+  error: string | null;
+  setError: (a: string | null) => void;
   stats?: Stats;
 };
 
-const MediaCard = ({ videoURL, isError, setIsError, stats }: Props) => {
+const MediaCard = ({ id, videoURL, error, setError, stats }: Props) => {
+  const [fallback, setFallback] = useState(false);
+
+  useEffect(() => {
+    if (id === error) {
+      setFallback(true);
+    }
+  }, [id, error]);
+
   return (
     <StyledCard>
       <CardMedia
-        component={isError ? "img" : "video"}
+        component={fallback ? "img" : "video"}
         height={VIDEO_HEIGHT}
-        image={isError ? fallbackSrc : videoURL}
+        image={fallback ? fallbackSrc : videoURL}
         muted
         controls
         autoPlay
         loop
-        onError={() => setIsError(true)}
+        onError={() => setError(id)}
       />
       {stats && (
         <StyledDiv>

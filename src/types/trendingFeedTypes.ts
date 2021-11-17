@@ -1,3 +1,7 @@
+export type ErrorObject = {
+  message: string;
+};
+
 type AuthorMeta = {
   id: string;
   secUid: string;

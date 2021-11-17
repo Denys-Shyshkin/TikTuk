@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 
 import UserCard from "../../components/UserCard";
 import UserPostList from "../../components/UserPostList";
-import ErrorAlert from "../../components/ErrorAlert";
+import ErrorAlert, {
+  renderErrorAlert,
+} from "../../components/ErrorAlert/ErrorAlert";
 import { ErrorMessages } from "../../constants";
 import { UserInfo } from "../../types/userInfoTypes";
+import { ErrorObject } from "../../types/trendingFeedTypes";
 import { fetchData } from "../../api";
 import { Endpoint, currentUser } from "../../api/constants";
 
@@ -73,8 +76,12 @@ const ProfilePage = () => {
     return () => controller.abort();
   }, [user]);
 
-  if (postsIsError || profileIsError) {
-    return <ErrorAlert message={ErrorMessages.UnknownError} />;
+  if (
+    Object.keys(profile).includes("message") ||
+    postsIsError ||
+    profileIsError
+  ) {
+    return renderErrorAlert(profile as ErrorObject);
   }
 
   if (Object.keys(profile).length === 0 && !profileIsLoading) {

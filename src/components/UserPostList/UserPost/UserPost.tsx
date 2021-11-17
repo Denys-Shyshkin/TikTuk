@@ -5,18 +5,19 @@ import { UserFeedItem } from "../../../types/userFeedTypes";
 
 type Props = {
   data: UserFeedItem;
-  isError: boolean;
-  setIsError: (a: boolean) => void;
+  error: string | null;
+  setError: (a: string | null) => void;
 };
 
-const UserPost = ({ data, isError, setIsError }: Props) => {
-  const { video, stats } = data;
+const UserPost = ({ data, error, setError }: Props) => {
+  const { id, video, stats } = data;
 
   return (
     <MediaCard
+      id={id}
       videoURL={video.playAddr}
-      isError={isError}
-      setIsError={setIsError}
+      error={error}
+      setError={setError}
       stats={stats}
     />
   );

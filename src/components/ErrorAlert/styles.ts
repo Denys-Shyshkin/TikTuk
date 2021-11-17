@@ -11,6 +11,7 @@ const StyledSnackbar = styled(Snackbar)<SnackbarProps>(() => ({
 
 const StyledAlert = styled(MuiAlert)<AlertProps>(() => ({
   width: "100%",
+  textAlign: "center",
 }));
 
 export { StyledSnackbar, StyledAlert };

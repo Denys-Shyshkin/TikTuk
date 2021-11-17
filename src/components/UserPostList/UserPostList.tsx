@@ -21,7 +21,7 @@ type Props = {
 };
 
 const UserPostList = ({ data, isLoading }: Props) => {
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const matches = useMediaQuery(MEDIA_QUERY);
   const displayedPosts = data?.slice(0, MAX_POSTS);
@@ -48,16 +48,12 @@ const UserPostList = ({ data, isLoading }: Props) => {
 
   return (
     <div>
-      {isError && <ErrorAlert message={ErrorMessages.VideoError} />}
+      {error && <ErrorAlert message={ErrorMessages.VideoError} />}
       <StyledGridContainer isMobile={matches} container spacing={1}>
         {posts?.map((userPost: UserFeedItem) => {
           return (
             <Grid key={userPost.id} item>
-              <UserPost
-                data={userPost}
-                isError={isError}
-                setIsError={setIsError}
-              />
+              <UserPost data={userPost} error={error} setError={setError} />
             </Grid>
           );
         })}

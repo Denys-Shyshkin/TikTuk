@@ -16,15 +16,15 @@ import {
 
 type Props = {
   data: FeedPostItem;
-  isError: boolean;
-  setIsError: (a: boolean) => void;
+  error: string | null;
+  setError: (a: string | null) => void;
 };
 
-const FeedPost = ({ data, isError, setIsError }: Props) => {
+const FeedPost = ({ data, error, setError }: Props) => {
   const navigate = useNavigate();
   const matches = useMediaQuery(MEDIA_QUERY);
 
-  const { text, authorMeta, videoUrl, diggCount, commentCount, hashtags } =
+  const { id, text, authorMeta, videoUrl, diggCount, commentCount, hashtags } =
     data;
 
   const clickHandler = () => {
@@ -49,9 +49,10 @@ const FeedPost = ({ data, isError, setIsError }: Props) => {
         />
         <StyledArticle isMobile={matches}>
           <MediaCard
+            id={id}
             videoURL={videoUrl}
-            isError={isError}
-            setIsError={setIsError}
+            error={error}
+            setError={setError}
           />
           <PostActions diggCount={diggCount} commentCount={commentCount} />
         </StyledArticle>

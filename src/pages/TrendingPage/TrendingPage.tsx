@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 import FeedPostList from "../../components/FeedPostsList";
 import SkeletonFeedList from "../../components/SkeletonFeedList";
-import ErrorAlert from "../../components/ErrorAlert";
-import { ErrorMessages } from "../../constants";
+import { renderErrorAlert } from "../../components/ErrorAlert/ErrorAlert";
+import { TrendingFeedList, ErrorObject } from "../../types/trendingFeedTypes";
 import { fetchData } from "../../api";
 import { Endpoint } from "../../api/constants";
 
 const TrendingPage = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<TrendingFeedList | ErrorObject>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -24,15 +24,17 @@ const TrendingPage = () => {
     return () => controller.abort();
   }, []);
 
-  if (isLoading || !posts.length) {
+  console.log(posts);
+
+  if ((!Array.isArray(posts) || isError) && !isLoading) {
+    return renderErrorAlert(posts as ErrorObject);
+  }
+
+  if (isLoading) {
     return <SkeletonFeedList />;
   }
 
-  if (isError) {
-    return <ErrorAlert message={ErrorMessages.UnknownError} />;
-  }
-
-  return <FeedPostList data={posts} />;
+  return <FeedPostList data={posts as TrendingFeedList} />;
 };
 
 export default TrendingPage;

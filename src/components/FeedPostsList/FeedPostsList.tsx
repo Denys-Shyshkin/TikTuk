@@ -19,7 +19,7 @@ type Props = {
 };
 
 const FeedPostsList = ({ data }: Props) => {
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const matches = useMediaQuery(MEDIA_QUERY);
   const displayedPosts = data?.slice(0, MAX_POSTS);
@@ -42,16 +42,12 @@ const FeedPostsList = ({ data }: Props) => {
 
   return (
     <div>
-      {isError && <ErrorAlert message={ErrorMessages.VideoError} />}
+      {error && <ErrorAlert message={ErrorMessages.VideoError} />}
       <StyledGridContainer isMobile={matches} container spacing={6}>
         {posts.map((mockedPost: FeedPostItem) => {
           return (
             <Grid key={mockedPost.id} item xs={12}>
-              <FeedPost
-                data={mockedPost}
-                isError={isError}
-                setIsError={setIsError}
-              />
+              <FeedPost data={mockedPost} error={error} setError={setError} />
             </Grid>
           );
         })}
