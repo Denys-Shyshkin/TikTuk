@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Pages } from "../../constants";
+import { Pages, ErrorMessages } from "../../constants";
 import { StyledSnackbar, StyledAlert } from "./styles";
 
 type Props = {
@@ -9,14 +9,21 @@ type Props = {
 };
 
 const ErrorAlert = ({ message }: Props) => {
+  const [open, setOpen] = useState(true);
+
   const navigate = useNavigate();
+
   const closeHandler = () => {
-    navigate(Pages.Feed);
+    if (message === ErrorMessages.VideoError) {
+      setOpen(false);
+    } else {
+      navigate(Pages.Feed);
+    }
   };
 
   return (
     <StyledSnackbar
-      open={true}
+      open={open}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       onClose={closeHandler}
       onClick={closeHandler}

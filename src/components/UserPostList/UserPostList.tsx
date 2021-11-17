@@ -5,9 +5,15 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import UserPost from "./UserPost";
 import SkeletonPostsList from "../SkeletonPostsList";
-import { MAX_POSTS, POSTS_PER_PAGE, MEDIA_QUERY } from "../../constants";
+import {
+  MAX_POSTS,
+  POSTS_PER_PAGE,
+  MEDIA_QUERY,
+  ErrorMessages,
+} from "../../constants";
 import { UserFeedList, UserFeedItem } from "../../types/userFeedTypes";
 import { StyledGridContainer, StyledDiv } from "./styles";
+import ErrorAlert from "../ErrorAlert";
 
 type Props = {
   data: UserFeedList;
@@ -15,6 +21,8 @@ type Props = {
 };
 
 const UserPostList = ({ data, isLoading }: Props) => {
+  const [isError, setIsError] = useState(false);
+
   const matches = useMediaQuery(MEDIA_QUERY);
   const displayedPosts = data?.slice(0, MAX_POSTS);
 
@@ -40,11 +48,16 @@ const UserPostList = ({ data, isLoading }: Props) => {
 
   return (
     <div>
+      {isError && <ErrorAlert message={ErrorMessages.VideoError} />}
       <StyledGridContainer isMobile={matches} container spacing={1}>
         {posts?.map((userPost: UserFeedItem) => {
           return (
             <Grid key={userPost.id} item>
-              <UserPost data={userPost} />
+              <UserPost
+                data={userPost}
+                isError={isError}
+                setIsError={setIsError}
+              />
             </Grid>
           );
         })}

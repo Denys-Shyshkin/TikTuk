@@ -4,15 +4,23 @@ import Pagination from "@mui/material/Pagination";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import FeedPost from "./FeedPost";
-import { MAX_POSTS, POSTS_PER_PAGE, MEDIA_QUERY } from "../../constants";
+import {
+  MAX_POSTS,
+  POSTS_PER_PAGE,
+  MEDIA_QUERY,
+  ErrorMessages,
+} from "../../constants";
 import { TrendingFeedList, FeedPostItem } from "../../types/trendingFeedTypes";
 import { StyledGridContainer, StyledDiv } from "./styles";
+import ErrorAlert from "../ErrorAlert";
 
 type Props = {
   data: TrendingFeedList;
 };
 
 const FeedPostsList = ({ data }: Props) => {
+  const [isError, setIsError] = useState(false);
+
   const matches = useMediaQuery(MEDIA_QUERY);
   const displayedPosts = data?.slice(0, MAX_POSTS);
 
@@ -34,11 +42,16 @@ const FeedPostsList = ({ data }: Props) => {
 
   return (
     <div>
+      {isError && <ErrorAlert message={ErrorMessages.VideoError} />}
       <StyledGridContainer isMobile={matches} container spacing={6}>
         {posts.map((mockedPost: FeedPostItem) => {
           return (
             <Grid key={mockedPost.id} item xs={12}>
-              <FeedPost data={mockedPost} />
+              <FeedPost
+                data={mockedPost}
+                isError={isError}
+                setIsError={setIsError}
+              />
             </Grid>
           );
         })}

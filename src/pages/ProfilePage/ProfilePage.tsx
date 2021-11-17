@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import UserCard from "../../components/UserCard";
 import UserPostList from "../../components/UserPostList";
 import ErrorAlert from "../../components/ErrorAlert";
+import { ErrorMessages } from "../../constants";
 import { UserInfo } from "../../types/userInfoTypes";
 import { fetchData } from "../../api";
 import { Endpoint, currentUser } from "../../api/constants";
@@ -73,11 +74,11 @@ const ProfilePage = () => {
   }, [user]);
 
   if (postsIsError || profileIsError) {
-    return <ErrorAlert message={"Something Went Wrong..."} />;
+    return <ErrorAlert message={ErrorMessages.UnknownError} />;
   }
 
   if (Object.keys(profile).length === 0 && !profileIsLoading) {
-    return <ErrorAlert message={"Oops... Page Not Found"} />;
+    return <ErrorAlert message={ErrorMessages.WrongPage} />;
   }
 
   if (!Array.isArray(userPosts)) {

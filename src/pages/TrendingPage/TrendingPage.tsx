@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import FeedPostList from "../../components/FeedPostsList";
 import SkeletonFeedList from "../../components/SkeletonFeedList";
 import ErrorAlert from "../../components/ErrorAlert";
+import { ErrorMessages } from "../../constants";
 import { fetchData } from "../../api";
 import { Endpoint } from "../../api/constants";
 
@@ -28,7 +29,7 @@ const TrendingPage = () => {
   }
 
   if (isError) {
-    return <ErrorAlert message={"Something Went Wrong..."} />;
+    return <ErrorAlert message={ErrorMessages.UnknownError} />;
   }
 
   return <FeedPostList data={posts} />;

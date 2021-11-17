@@ -16,9 +16,11 @@ import {
 
 type Props = {
   data: FeedPostItem;
+  isError: boolean;
+  setIsError: (a: boolean) => void;
 };
 
-const FeedPost = ({ data }: Props) => {
+const FeedPost = ({ data, isError, setIsError }: Props) => {
   const navigate = useNavigate();
   const matches = useMediaQuery(MEDIA_QUERY);
 
@@ -46,7 +48,11 @@ const FeedPost = ({ data }: Props) => {
           onClick={clickHandler}
         />
         <StyledArticle isMobile={matches}>
-          <MediaCard videoURL={videoUrl} />
+          <MediaCard
+            videoURL={videoUrl}
+            isError={isError}
+            setIsError={setIsError}
+          />
           <PostActions diggCount={diggCount} commentCount={commentCount} />
         </StyledArticle>
       </section>

@@ -16,3 +16,9 @@ export const colors = {
 
 export const MEDIA_QUERY = "(max-width:600px)";
 export const isMobile = "isMobile";
+
+export enum ErrorMessages {
+  WrongPage = "Oops... Page Not Found",
+  VideoError = "Looks like there are might be a problem with some videos",
+  UnknownError = "Something Went Wrong...",
+}
