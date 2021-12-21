@@ -1,3 +1,3 @@
-import FeedPostsList from "./FeedPostsList";
+import FeedPostsList from './FeedPostsList';
 
 export default FeedPostsList;

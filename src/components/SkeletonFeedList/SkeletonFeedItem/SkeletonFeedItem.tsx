@@ -1,8 +1,8 @@
-import React from "react";
-import Skeleton from "@mui/material/Skeleton";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import React from 'react';
+import Skeleton from '@mui/material/Skeleton';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { VIDEO_HEIGHT, MEDIA_QUERY } from "../../../constants";
+import { VIDEO_HEIGHT, MEDIA_QUERY } from '../../../constants';
 import {
   StyledStack,
   AvatarSkeleton,
@@ -10,7 +10,7 @@ import {
   StyledDiv,
   StyledSection,
   IconSkeleton,
-} from "./styles";
+} from './styles';
 
 const SkeletonFeedItem = () => {
   const matches = useMediaQuery(MEDIA_QUERY);

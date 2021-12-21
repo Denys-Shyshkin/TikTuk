@@ -1,3 +1,3 @@
-import SkeletonPostsList from "./SkeletonPostsList";
+import SkeletonPostsList from './SkeletonPostsList';
 
 export default SkeletonPostsList;

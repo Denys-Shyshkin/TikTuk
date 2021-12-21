@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { ErrorObject } from "../../types/trendingFeedTypes";
-import { Pages, ErrorMessages } from "../../constants";
-import { StyledSnackbar, StyledAlert } from "./styles";
+import { ErrorObject } from '../../types/trendingFeedTypes';
+import { Pages, ErrorMessages } from '../../constants';
+import { StyledSnackbar, StyledAlert } from './styles';
 
 type Props = {
-  message: string | undefined;
-};
+  message: string | undefined
+}
 
 export const renderErrorAlert = (profile: ErrorObject) => {
   return <ErrorAlert message={profile?.message} />;
@@ -29,12 +29,12 @@ const ErrorAlert = ({ message }: Props) => {
   return (
     <StyledSnackbar
       open={open}
-      anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       onClose={closeHandler}
       onClick={closeHandler}
     >
       <StyledAlert elevation={6} variant="filled" severity="error">
-        {message ? message : ErrorMessages.UnknownError}
+        {message || ErrorMessages.UnknownError}
       </StyledAlert>
     </StyledSnackbar>
   );

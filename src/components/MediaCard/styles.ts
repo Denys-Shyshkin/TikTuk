@@ -1,15 +1,15 @@
-import Card, { CardProps } from "@mui/material/Card";
-import PlayArrowOutlinedIcon from "@mui/icons-material/PlayArrowOutlined";
-import { styled } from "@mui/material/styles";
+import Card, { CardProps } from '@mui/material/Card';
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
+import { styled } from '@mui/material/styles';
 
 const StyledCard = styled(Card)<CardProps>(() => ({
-  position: "relative",
+  position: 'relative',
   width: 225,
 }));
 
-const StyledDiv = styled("div")(() => ({
-  position: "absolute",
-  display: "flex",
+const StyledDiv = styled('div')(() => ({
+  position: 'absolute',
+  display: 'flex',
   margin: 10,
   zIndex: 1,
   top: 0,
@@ -17,7 +17,7 @@ const StyledDiv = styled("div")(() => ({
 }));
 
 const StyledIcon = styled(PlayArrowOutlinedIcon)(() => ({
-  color: "white",
+  color: 'white',
 }));
 
 export { StyledCard, StyledDiv, StyledIcon };

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import FeedPostList from "../../components/FeedPostsList";
-import SkeletonFeedList from "../../components/SkeletonFeedList";
-import { renderErrorAlert } from "../../components/ErrorAlert/ErrorAlert";
-import { TrendingFeedList, ErrorObject } from "../../types/trendingFeedTypes";
-import { fetchData } from "../../api";
-import { Endpoint } from "../../api/constants";
+import FeedPostList from '../../components/FeedPostsList';
+import SkeletonFeedList from '../../components/SkeletonFeedList';
+import { renderErrorAlert } from '../../components/ErrorAlert/ErrorAlert';
+import { TrendingFeedList, ErrorObject } from '../../types/trendingFeedTypes';
+import { fetchData } from '../../api';
+import { Endpoint } from '../../api/constants';
 
 const TrendingPage = () => {
   const [posts, setPosts] = useState<TrendingFeedList | ErrorObject>([]);

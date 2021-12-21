@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import React, { useState, useEffect } from 'react';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
-import { formatLargeNumber } from "../../utils/numbers";
-import { VIDEO_HEIGHT } from "../../constants";
-import { Stats } from "../../types/userFeedTypes";
-import fallbackSrc from "../../assets/Tik-tok-logo.jpeg";
-import { StyledCard, StyledDiv, StyledIcon } from "./styles";
+import { formatLargeNumber } from '../../utils/numbers';
+import { VIDEO_HEIGHT } from '../../constants';
+import { Stats } from '../../types/userFeedTypes';
+import fallbackSrc from '../../assets/Tik-tok-logo.jpeg';
+import { StyledCard, StyledDiv, StyledIcon } from './styles';
 
 type Props = {
-  id: string;
-  videoURL: string;
-  error: string | null;
-  setError: (a: string | null) => void;
-  stats?: Stats;
-};
+  id: string
+  videoURL: string
+  error: string | null
+  setError: (a: string | null) => void
+  stats?: Stats
+}
 
 const MediaCard = ({ id, videoURL, error, setError, stats }: Props) => {
   const [fallback, setFallback] = useState(false);
@@ -28,7 +28,7 @@ const MediaCard = ({ id, videoURL, error, setError, stats }: Props) => {
   return (
     <StyledCard>
       <CardMedia
-        component={fallback ? "img" : "video"}
+        component={fallback ? 'img' : 'video'}
         height={VIDEO_HEIGHT}
         image={fallback ? fallbackSrc : videoURL}
         muted

@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MusicVideoIcon from "@mui/icons-material/MusicVideo";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MusicVideoIcon from '@mui/icons-material/MusicVideo';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-import { Pages } from "../../constants";
+import { Pages } from '../../constants';
 import {
   StyledBox,
   StyledAppBar,
   StyledTypography,
   StyledIconButton,
-} from "./styles";
+} from './styles';
 
 const MenuAppBar = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const MenuAppBar = () => {
               size="large"
               aria-label="get trending feed"
               onClick={clickHandler}
-              color={isActive.feed ? "default" : "inherit"}
+              color={isActive.feed ? 'default' : 'inherit'}
             >
               <MusicVideoIcon />
               <StyledTypography variant="body1">Feed</StyledTypography>
@@ -61,7 +61,7 @@ const MenuAppBar = () => {
               size="large"
               aria-label="account of current user"
               onClick={() => navigate(Pages.Profile)}
-              color={isActive.profile ? "default" : "inherit"}
+              color={isActive.profile ? 'default' : 'inherit'}
             >
               <AccountCircle />
               <StyledTypography variant="body1">Profile</StyledTypography>

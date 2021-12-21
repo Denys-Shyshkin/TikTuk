@@ -1,3 +1,3 @@
-import MediaCard from "./MediaCard";
+import MediaCard from './MediaCard';
 
 export default MediaCard;

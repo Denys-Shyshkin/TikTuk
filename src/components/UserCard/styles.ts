@@ -1,40 +1,40 @@
-import Avatar, { AvatarProps } from "@mui/material/Avatar";
-import Card, { CardProps } from "@mui/material/Card";
+import Avatar, { AvatarProps } from '@mui/material/Avatar';
+import Card, { CardProps } from '@mui/material/Card';
 import CircularProgress, {
   CircularProgressProps,
-} from "@mui/material/CircularProgress";
-import CardContent, { CardContentProps } from "@mui/material/CardContent";
-import Typography, { TypographyProps } from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
+} from '@mui/material/CircularProgress';
+import CardContent, { CardContentProps } from '@mui/material/CardContent';
+import Typography, { TypographyProps } from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 
-import { colors } from "../../constants";
+import { colors } from '../../constants';
 
 const StyledCard = styled(Card)<CardProps>(() => ({
   width: 360,
-  height: "fit-content",
+  height: 'fit-content',
   marginTop: 100,
-  marginLeft: "auto",
-  marginRight: "auto",
+  marginLeft: 'auto',
+  marginRight: 'auto',
 }));
 
 const SpinnerCard = styled(Card)<CardProps>(() => ({
   width: 360,
   marginTop: 100,
   height: 220,
-  marginLeft: "auto",
-  marginRight: "auto",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 }));
 
 const StyledProgress = styled(CircularProgress)<CircularProgressProps>(() => ({
   color: colors.secondary,
 }));
 
-const StyledSection = styled("section")(() => ({
-  display: "flex",
-  justifyContent: "space-around",
+const StyledSection = styled('section')(() => ({
+  display: 'flex',
+  justifyContent: 'space-around',
 }));
 
 const StyledAvatar = styled(Avatar)<AvatarProps>(() => ({
@@ -44,19 +44,19 @@ const StyledAvatar = styled(Avatar)<AvatarProps>(() => ({
 }));
 
 const StyledCardContent = styled(CardContent)<CardContentProps>(() => ({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
 }));
 
-const StyledArticle = styled("article")(() => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "end",
+const StyledArticle = styled('article')(() => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'end',
 }));
 
 const StyledTypography = styled(Typography)<TypographyProps>(() => ({
-  whiteSpace: "pre-wrap",
+  whiteSpace: 'pre-wrap',
 }));
 
 export {

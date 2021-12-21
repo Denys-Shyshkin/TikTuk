@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import UserCard from "../../components/UserCard";
-import UserPostList from "../../components/UserPostList";
+import UserCard from '../../components/UserCard';
+import UserPostList from '../../components/UserPostList';
 import ErrorAlert, {
   renderErrorAlert,
-} from "../../components/ErrorAlert/ErrorAlert";
-import { ErrorMessages } from "../../constants";
-import { UserInfo } from "../../types/userInfoTypes";
-import { ErrorObject } from "../../types/trendingFeedTypes";
-import { fetchData } from "../../api";
-import { Endpoint, currentUser } from "../../api/constants";
+} from '../../components/ErrorAlert/ErrorAlert';
+import { ErrorMessages } from '../../constants';
+import { UserInfo } from '../../types/userInfoTypes';
+import { ErrorObject } from '../../types/trendingFeedTypes';
+import { fetchData } from '../../api';
+import { Endpoint, currentUser } from '../../api/constants';
 
 const ProfilePage = () => {
   const params = useParams();
   const chosenUser = params.uniqueId;
-  const user = chosenUser ? chosenUser : currentUser;
+  const user = chosenUser || currentUser;
 
   const [profile, setProfile] = useState({});
   const [userPosts, setUserPosts] = useState([]);
@@ -51,7 +51,7 @@ const ProfilePage = () => {
   }, [user]);
 
   if (
-    Object.keys(profile).includes("message") ||
+    Object.keys(profile).includes('message') ||
     postsIsError ||
     profileIsError
   ) {
@@ -63,7 +63,7 @@ const ProfilePage = () => {
   }
 
   if (!Array.isArray(userPosts)) {
-    const userFeed = require("../../user-feed.json");
+    const userFeed = require('../../user-feed.json');
     setUserPosts(userFeed.itemList);
   }
 

@@ -1,10 +1,10 @@
-import React, { ReactElement } from "react";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import React, { ReactElement } from 'react';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
-import { formatLargeNumber } from "../../utils/numbers";
-import { UserInfo } from "../../types/userInfoTypes";
-import { ErrorMessages } from "../../constants";
+import { formatLargeNumber } from '../../utils/numbers';
+import { UserInfo } from '../../types/userInfoTypes';
+import { ErrorMessages } from '../../constants';
 import {
   StyledCard,
   SpinnerCard,
@@ -14,13 +14,13 @@ import {
   StyledCardContent,
   StyledArticle,
   StyledTypography,
-} from "./styles";
-import ErrorAlert from "../ErrorAlert";
+} from './styles';
+import ErrorAlert from '../ErrorAlert';
 
 type Props = {
-  profile: UserInfo;
-  isLoading: boolean;
-};
+  profile: UserInfo
+  isLoading: boolean
+}
 
 const UserCard = ({ profile, isLoading }: Props): ReactElement => {
   if (isLoading) {

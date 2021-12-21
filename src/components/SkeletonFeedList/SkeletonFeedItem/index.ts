@@ -1,3 +1,3 @@
-import SkeletonFeedItem from "./SkeletonFeedItem";
+import SkeletonFeedItem from './SkeletonFeedItem';
 
 export default SkeletonFeedItem;

@@ -1,3 +1,3 @@
-import PostActions from "./PostActions";
+import PostActions from './PostActions';
 
 export default PostActions;

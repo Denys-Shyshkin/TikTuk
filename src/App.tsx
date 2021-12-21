@@ -1,11 +1,11 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import ProfilePage from "./pages/ProfilePage";
-import TrendingPage from "./pages/TrendingPage";
-import AppBar from "./components/MenuAppBar";
-import { Pages, ErrorMessages } from "./constants";
-import ErrorAlert from "./components/ErrorAlert";
+import ProfilePage from './pages/ProfilePage';
+import TrendingPage from './pages/TrendingPage';
+import AppBar from './components/MenuAppBar';
+import { Pages, ErrorMessages } from './constants';
+import ErrorAlert from './components/ErrorAlert';
 
 const App = () => {
   return (

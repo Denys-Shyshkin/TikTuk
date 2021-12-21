@@ -1,14 +1,15 @@
-import "@testing-library/jest-dom/extend-expect";
-import { render } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import React from 'react';
+import '@testing-library/jest-dom/extend-expect';
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
-import UserCard from "../UserCard";
-import { userInfoMock } from "../../../mockedData/userInfoMock";
+import UserCard from '../UserCard';
+import { userInfoMock } from '../../../mockedData/userInfoMock';
 
-describe("<UserCard />", () => {
+describe('<UserCard />', () => {
   const testName = userInfoMock.user.nickname;
 
-  test("renders Component", () => {
+  test('renders Component', () => {
     const renderUserCard = () => {
       return render(
         <MemoryRouter>
@@ -21,7 +22,7 @@ describe("<UserCard />", () => {
     expect(userName).toBeInTheDocument();
   });
 
-  test("renders spinner during loading", () => {
+  test('renders spinner during loading', () => {
     const renderUserCard = () => {
       return render(
         <MemoryRouter>
@@ -30,7 +31,7 @@ describe("<UserCard />", () => {
       );
     };
     const { container } = renderUserCard();
-    const spinner = container.querySelector("circle");
+    const spinner = container.querySelector('circle');
     expect(spinner).toBeInTheDocument();
   });
 });

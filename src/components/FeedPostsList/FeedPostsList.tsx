@@ -1,22 +1,22 @@
-import React, { useState, useEffect, MouseEvent } from "react";
-import Grid from "@mui/material/Grid";
-import Pagination from "@mui/material/Pagination";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import React, { useState, useEffect, MouseEvent } from 'react';
+import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import FeedPost from "./FeedPost";
+import FeedPost from './FeedPost';
 import {
   MAX_POSTS,
   POSTS_PER_PAGE,
   MEDIA_QUERY,
   ErrorMessages,
-} from "../../constants";
-import { TrendingFeedList, FeedPostItem } from "../../types/trendingFeedTypes";
-import { StyledGridContainer, StyledDiv } from "./styles";
-import ErrorAlert from "../ErrorAlert";
+} from '../../constants';
+import { TrendingFeedList, FeedPostItem } from '../../types/trendingFeedTypes';
+import { StyledGridContainer, StyledDiv } from './styles';
+import ErrorAlert from '../ErrorAlert';
 
 type Props = {
-  data: TrendingFeedList;
-};
+  data: TrendingFeedList
+}
 
 const FeedPostsList = ({ data }: Props) => {
   const [error, setError] = useState<string | null>(null);

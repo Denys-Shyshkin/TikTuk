@@ -1,3 +1,3 @@
-import SkeletonPostItem from "./SkeletonPostItem";
+import SkeletonPostItem from './SkeletonPostItem';
 
 export default SkeletonPostItem;

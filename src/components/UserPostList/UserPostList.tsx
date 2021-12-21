@@ -1,24 +1,24 @@
-import React, { useState, useEffect, MouseEvent } from "react";
-import Grid from "@mui/material/Grid";
-import Pagination from "@mui/material/Pagination";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import React, { useState, useEffect, MouseEvent } from 'react';
+import Grid from '@mui/material/Grid';
+import Pagination from '@mui/material/Pagination';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import UserPost from "./UserPost";
-import SkeletonPostsList from "../SkeletonPostsList";
+import UserPost from './UserPost';
+import SkeletonPostsList from '../SkeletonPostsList';
 import {
   MAX_POSTS,
   POSTS_PER_PAGE,
   MEDIA_QUERY,
   ErrorMessages,
-} from "../../constants";
-import { UserFeedList, UserFeedItem } from "../../types/userFeedTypes";
-import { StyledGridContainer, StyledDiv } from "./styles";
-import ErrorAlert from "../ErrorAlert";
+} from '../../constants';
+import { UserFeedList, UserFeedItem } from '../../types/userFeedTypes';
+import { StyledGridContainer, StyledDiv } from './styles';
+import ErrorAlert from '../ErrorAlert';
 
 type Props = {
-  data: UserFeedList;
-  isLoading: boolean;
-};
+  data: UserFeedList
+  isLoading: boolean
+}
 
 const UserPostList = ({ data, isLoading }: Props) => {
   const [error, setError] = useState<string | null>(null);

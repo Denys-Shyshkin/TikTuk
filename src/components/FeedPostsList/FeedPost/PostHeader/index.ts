@@ -1,3 +1,3 @@
-import PostHeader from "./PostHeader";
+import PostHeader from './PostHeader';
 
 export default PostHeader;

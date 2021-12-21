@@ -1,3 +1,3 @@
-import TrendingPage from "./TrendingPage";
+import TrendingPage from './TrendingPage';
 
 export default TrendingPage;

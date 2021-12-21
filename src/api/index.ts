@@ -1,4 +1,4 @@
-import { BASE_URL, RAPID_API_KEY } from "./constants";
+import { BASE_URL, RAPID_API_KEY } from './constants';
 
 type AbortCtrl = {
   readonly signal: AbortSignal;
@@ -15,10 +15,10 @@ export const fetchData = (
   setIsLoading(true);
   fetch(BASE_URL + endpoint, {
     signal: controller.signal,
-    method: "GET",
+    method: 'GET',
     headers: {
-      "x-rapidapi-host": "tiktok33.p.rapidapi.com",
-      "x-rapidapi-key": RAPID_API_KEY,
+      'x-rapidapi-host': 'tiktok33.p.rapidapi.com',
+      'x-rapidapi-key': RAPID_API_KEY,
     },
   })
     .then((response) => {

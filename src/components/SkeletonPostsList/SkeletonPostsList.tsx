@@ -1,10 +1,10 @@
-import React from "react";
-import Grid from "@mui/material/Grid";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import React from 'react';
+import Grid from '@mui/material/Grid';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import SkeletonPostItem from "./SkeletonPostItem";
-import { POSTS_PER_PAGE, MEDIA_QUERY } from "../../constants";
-import { StyledGridContainer } from "./styles";
+import SkeletonPostItem from './SkeletonPostItem';
+import { POSTS_PER_PAGE, MEDIA_QUERY } from '../../constants';
+import { StyledGridContainer } from './styles';
 
 const SkeletonUserPosts = () => {
   const matches = useMediaQuery(MEDIA_QUERY);

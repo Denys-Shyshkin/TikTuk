@@ -1,10 +1,10 @@
-import Grid, { GridProps } from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
+import Grid, { GridProps } from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
 
-import { isMobile } from "../../constants";
+import { isMobile } from '../../constants';
 
 interface StyledGridContainerProps extends GridProps {
-  isMobile?: boolean;
+  isMobile?: boolean
 }
 
 const StyledGridContainer = styled(Grid, {
@@ -13,16 +13,16 @@ const StyledGridContainer = styled(Grid, {
   marginTop: 50,
   marginBottom: 50,
   width: isMobile ? 230 : 700,
-  marginLeft: "auto",
-  marginRight: "auto",
+  marginLeft: 'auto',
+  marginRight: 'auto',
 }));
 
-const StyledDiv = styled("div")(() => ({
-  marginLeft: "auto",
-  marginRight: "auto",
-  width: "100%",
-  display: "flex",
-  justifyContent: "center",
+const StyledDiv = styled('div')(() => ({
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
   marginBottom: 20,
 }));
 

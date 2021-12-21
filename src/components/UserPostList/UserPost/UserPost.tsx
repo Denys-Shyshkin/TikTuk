@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import MediaCard from "../../MediaCard";
-import { UserFeedItem } from "../../../types/userFeedTypes";
+import MediaCard from '../../MediaCard';
+import { UserFeedItem } from '../../../types/userFeedTypes';
 
 type Props = {
-  data: UserFeedItem;
-  error: string | null;
-  setError: (a: string | null) => void;
-};
+  data: UserFeedItem
+  error: string | null
+  setError: (a: string | null) => void
+}
 
 const UserPost = ({ data, error, setError }: Props) => {
   const { id, video, stats } = data;
